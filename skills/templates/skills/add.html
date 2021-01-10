@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block title %}my skills{% endblock %}
+
+{% block content %}
+
+    <div class="ui grid">
+        <div class="four wide column">
+            <form action="" method="POST" class="form ui" autocomplete="off">
+                {% csrf_token %}
+                {{ formset.as_p }}
+                <button class="secondary button ui" type="submit">Send</button>
+            </form>
+        </div>
+        <div class="twelve wide column">
+            Chart here
+        </div>
+    </div>
+
+
+{% endblock %}
