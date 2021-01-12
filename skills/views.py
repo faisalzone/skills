@@ -21,8 +21,11 @@ def skill_view(request):
 
         return redirect('skills:my-skills')
 
+    qs = profile.skill_set.all()
+
     context = {
         'formset': formset,
+        'qs': qs,
     }
 
     return render(request, 'skills/add.html', context)
