@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 from .models import Profile
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 
-class UserChartView(TemplateView):
+class UserChartView(LoginRequiredMixin, TemplateView):
     template_name = 'profiles/user_skills.html'
 
     def get_object(self):
@@ -20,6 +21,6 @@ class UserChartView(TemplateView):
         return context
 
 
-class UserListView(ListView):
+class UserListView(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'profiles/user_list.html'

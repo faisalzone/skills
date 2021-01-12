@@ -71,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'skills_proj.wsgi.application'
 
+LOGIN_URL = '/admin/'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

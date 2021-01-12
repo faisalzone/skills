@@ -17,7 +17,7 @@
         <td>{{ obj.name }}</td>
         <td>{{ obj.created|date }}</td>
         <td>
-            <a href="#">
+            <a href="{% url 'profiles:user-chart' obj.pk %}">
                 <button class="ui primary button">
                     See
                 </button>
