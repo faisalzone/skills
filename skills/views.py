@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.forms import inlineformset_factory
+from django.views.generic import TemplateView
+
 from .models import Skill
 from profiles.models import Profile
 
@@ -8,6 +10,21 @@ from profiles.models import Profile
 
 def home_view(request):
     return render(request, 'skills/home.html', {})
+
+
+class UserChartView(TemplateView):
+    template_name = 'skills/user_skills.html'
+
+    def get_object(self):
+        pk = self.kwargs.get('profile_id')
+        return pk
+
+    def get_context_data(self, **kwargs):
+        context = super(UserChartView, self).get_context_data(**kwargs)
+        profile = Profile.objects.get(name__id=self.get_object())
+        qs = profile.skill_set.all()
+        context["qs"] = qs
+        return context
 
 
 def skill_view(request):

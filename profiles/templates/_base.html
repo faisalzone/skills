@@ -15,10 +15,11 @@
         <title>skill-site | {% block title %}{% endblock %}</title>
     </head>
     <body>
+    {% include '_navbar.html' %}
+
     {% block scripts %}
     {% endblock %}
 
-    {% include '_navbar.html' %}
     <div class="container ui">
         {% block content %}
         {% endblock %}
