@@ -22,6 +22,7 @@ from skills.views import home_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('skills/', include('skills.urls', namespace='skills')),
+    path('profiles/', include('profiles.urls', namespace='profiles')),
     path('', home_view, name='home'),
 ]
 

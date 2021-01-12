@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% block title %}user list{% endblock %}
+
+{% block content %}
+<table class="ui single line table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Joined Date</th>
+            <th>Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for obj in object_list %}
+    <tr>
+        <td>{{ obj.name }}</td>
+        <td>{{ obj.created|date }}</td>
+        <td>
+            <a href="#">
+                <button class="ui primary button">
+                    See
+                </button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
