@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.forms import inlineformset_factory
 from django.views.generic import TemplateView
@@ -10,6 +11,18 @@ from profiles.models import Profile
 
 def home_view(request):
     return render(request, 'skills/home.html', {})
+
+
+class AllChartView(TemplateView):
+    template_name = 'skills/all_charts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Grouping by the 'name', creating a new variable 'total' and summing up the 'score'
+        qs = Skill.objects.values('name').annotate(total=Sum('score'))
+        # qs = Skill.objects.all()
+        context["qs"] = qs
+        return context
 
 
 class UserChartView(TemplateView):

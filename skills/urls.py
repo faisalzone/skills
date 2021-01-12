@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import skill_view, UserChartView
+from .views import skill_view, UserChartView, AllChartView
 
 
 app_name = 'skills'
 
 
 urlpatterns = [
+    path('all/', AllChartView.as_view(), name='all-skills'),
     path('<profile_id>/', UserChartView.as_view(), name='user-skills'),
     path('', skill_view, name='my-skills'),
 ]
